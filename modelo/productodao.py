@@ -1,4 +1,4 @@
-from modelo.productos import Producto
+from modelo.models import Producto
 from modelo.conexionbd import ConexionBD
 
 class ProductoDAO:
