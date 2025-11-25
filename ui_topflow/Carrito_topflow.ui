@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1033</width>
+    <height>825</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ========================================
+   ESTILO JUVENIL MODERNO - Qt Designer
+   Colores: Azul Eléctrico, Morado, Coral
+   ======================================== */
+
+/* CONFIGURACIÓN GENERAL */
+QWidget {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+    font-size: 14px;
+}
+
+QMainWindow {
+    background-color: #16213e;
+}
+
+/* BOTONES */
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #6C63FF, stop:1 #5a52d5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    min-height: 35px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #7d75ff, stop:1 #6b63e5);
+    transform: scale(1.05);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #5548cc, stop:1 #4a41b8);
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+QPushButton:disabled {
+    background-color: #3a3a4a;
+    color: #6a6a7a;
+}
+
+/* Botón Alternativo (Acento Coral) */
+QPushButton#btnAccion,
+QPushButton#btnGuardar,
+QPushButton#btnAceptar {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #FF6B6B, stop:1 #ee5a6f);
+}
+
+QPushButton#btnAccion:hover,
+QPushButton#btnGuardar:hover,
+QPushButton#btnAceptar:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #ff7c7c, stop:1 #ff6b7f);
+}
+
+/* LINE EDIT (CAMPOS DE TEXTO) */
+QLineEdit {
+    background-color: #0f3460;
+    border: 2px solid #16213e;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #e0e0e0;
+    selection-background-color: #6C63FF;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #6C63FF;
+    background-color: #133b5c;
+}
+
+QLineEdit:hover {
+    border: 2px solid #4a4a6a;
+}
+
+QLineEdit:disabled {
+    background-color: #2a2a3a;
+    color: #6a6a7a;
+    border: 2px solid #1a1a2a;
+}
+
+/* TEXT EDIT Y PLAIN TEXT EDIT */
+QTextEdit, QPlainTextEdit {
+    background-color: #0f3460;
+    border: 2px solid #16213e;
+    border-radius: 10px;
+    padding: 10px;
+    color: #e0e0e0;
+    selection-background-color: #6C63FF;
+}
+
+QTextEdit:focus, QPlainTextEdit:focus {
+    border: 2px solid #6C63FF;
+}
+
+/* COMBO BOX */
+QComboBox {
+    background-color: #0f3460;
+    border: 2px solid #16213e;
+    border-radius: 10px;
+    padding: 8px 15px;
+    color: #e0e0e0;
+    min-height: 30px;
+}
+
+QComboBox:hover {
+    border: 2px solid #4a4a6a;
+}
+
+QComboBox:focus {
+    border: 2px solid #6C63FF;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png);
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #0f3460;
+    border: 2px solid #6C63FF;
+    border-radius: 8px;
+    selection-background-color: #6C63FF;
+    selection-color: white;
+    padding: 5px;
+    outline: none;
+}
+
+/* SPIN BOX Y DOUBLE SPIN BOX */
+QSpinBox, QDoubleSpinBox {
+    background-color: #0f3460;
+    border: 2px solid #16213e;
+    border-radius: 10px;
+    padding: 8px 15px;
+    color: #e0e0e0;
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 2px solid #6C63FF;
+}
+
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    background-color: #6C63FF;
+    border-top-right-radius: 8px;
+    width: 20px;
+}
+
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    background-color: #6C63FF;
+    border-bottom-right-radius: 8px;
+    width: 20px;
+}
+
+/* LABELS */
+QLabel {
+    color: #e0e0e0;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+QLabel#lblTitulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6C63FF;
+    padding: 10px;
+}
+
+QLabel#lblSubtitulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF6B6B;
+}
+
+/* CHECK BOX */
+QCheckBox {
+    color: #e0e0e0;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #4a4a6a;
+    background-color: #0f3460;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #6C63FF;
+    border: 2px solid #6C63FF;
+    image: url(check.png);
+}
+
+QCheckBox::indicator:hover {
+    border: 2px solid #6C63FF;
+}
+
+/* RADIO BUTTON */
+QRadioButton {
+    color: #e0e0e0;
+    spacing: 8px;
+}
+
+QRadioButton::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 2px solid #4a4a6a;
+    background-color: #0f3460;
+}
+
+QRadioButton::indicator:checked {
+    background-color: #6C63FF;
+    border: 2px solid #6C63FF;
+}
+
+QRadioButton::indicator:hover {
+    border: 2px solid #6C63FF;
+}
+
+/* GROUP BOX */
+QGroupBox {
+    border: 2px solid #4a4a6a;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding-top: 20px;
+    font-weight: bold;
+    color: #FF6B6B;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 5px 15px;
+    background-color: #16213e;
+    border-radius: 8px;
+    color: #FF6B6B;
+}
+
+/* TAB WIDGET */
+QTabWidget::pane {
+    border: 2px solid #4a4a6a;
+    border-radius: 10px;
+    background-color: #16213e;
+    top: -2px;
+}
+
+QTabBar::tab {
+    background-color: #0f3460;
+    color: #a0a0a0;
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 12px 25px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+QTabBar::tab:selected {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #6C63FF, stop:1 #5a52d5);
+    color: white;
+}
+
+QTabBar::tab:hover {
+    background-color: #1a4d7a;
+    color: #e0e0e0;
+}
+
+/* TABLE WIDGET */
+QTableWidget {
+    background-color: #16213e;
+    alternate-background-color: #1a2332;
+    border: 2px solid #4a4a6a;
+    border-radius: 10px;
+    gridline-color: #2a3a4a;
+    color: #e0e0e0;
+}
+
+QTableWidget::item {
+    padding: 8px;
+    border: none;
+}
+
+QTableWidget::item:selected {
+    background-color: #6C63FF;
+    color: white;
+}
+
+QTableWidget::item:hover {
+    background-color: #2a4a6a;
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #6C63FF, stop:1 #5a52d5);
+    color: white;
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+QHeaderView::section:hover {
+    background-color: #7d75ff;
+}
+
+/* SCROLLBAR VERTICAL */
+QScrollBar:vertical {
+    background-color: #1a1a2e;
+    width: 12px;
+    margin: 0;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #6C63FF;
+    min-height: 30px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #7d75ff;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* SCROLLBAR HORIZONTAL */
+QScrollBar:horizontal {
+    background-color: #1a1a2e;
+    height: 12px;
+    margin: 0;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #6C63FF;
+    min-width: 30px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #7d75ff;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* PROGRESS BAR */
+QProgressBar {
+    background-color: #0f3460;
+    border: 2px solid #16213e;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    height: 25px;
+}
+
+QProgressBar::chunk {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #6C63FF, stop:1 #FF6B6B);
+    border-radius: 8px;
+}
+
+/* SLIDER */
+QSlider::groove:horizontal {
+    background-color: #0f3460;
+    height: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background-color: #6C63FF;
+    width: 20px;
+    height: 20px;
+    margin: -6px 0;
+    border-radius: 10px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #7d75ff;
+}
+
+/* MENU BAR */
+QMenuBar {
+    background-color: #16213e;
+    color: #e0e0e0;
+    border-bottom: 2px solid #4a4a6a;
+}
+
+QMenuBar::item {
+    padding: 8px 15px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #6C63FF;
+    color: white;
+}
+
+/* MENU */
+QMenu {
+    background-color: #16213e;
+    border: 2px solid #6C63FF;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+QMenu::item {
+    padding: 8px 30px 8px 15px;
+    border-radius: 5px;
+    color: #e0e0e0;
+}
+
+QMenu::item:selected {
+    background-color: #6C63FF;
+    color: white;
+}
+
+/* TOOLTIP */
+QToolTip {
+    background-color: #6C63FF;
+    color: white;
+    border: 2px solid #5a52d5;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+}
+
+/* STATUS BAR */
+QStatusBar {
+    background-color: #16213e;
+    color: #a0a0a0;
+    border-top: 2px solid #4a4a6a;
+}
+
+/* DIALOG */
+QDialog {
+    background-color: #1a1a2e;
+}
+
+/* LIST WIDGET */
+QListWidget {
+    background-color: #16213e;
+    border: 2px solid #4a4a6a;
+    border-radius: 10px;
+    color: #e0e0e0;
+    padding: 5px;
+}
+
+QListWidget::item {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 2px;
+}
+
+QListWidget::item:selected {
+    background-color: #6C63FF;
+    color: white;
+}
+
+QListWidget::item:hover {
+    background-color: #2a4a6a;
+}
+
+/* TREE WIDGET */
+QTreeWidget {
+    background-color: #16213e;
+    border: 2px solid #4a4a6a;
+    border-radius: 10px;
+    color: #e0e0e0;
+}
+
+QTreeWidget::item {
+    padding: 8px;
+}
+
+QTreeWidget::item:selected {
+    background-color: #6C63FF;
+    color: white;
+}
+
+QTreeWidget::item:hover {
+    background-color: #2a4a6a;
+}
+
+/* CALENDAR WIDGET */
+QCalendarWidget {
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+QCalendarWidget QToolButton {
+    color: #e0e0e0;
+    background-color: #0f3460;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #6C63FF;
+}
+
+QCalendarWidget QAbstractItemView {
+    background-color: #16213e;
+    selection-background-color: #6C63FF;
+    selection-color: white;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>55</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Salir</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../Documents/Qt proyecto final/Salir_logo.png</normaloff>../Documents/Qt proyecto final/Salir_logo.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>220</number>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Nombre</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Cantidad</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Precio</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Precio total</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Vaciar Carrito</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>55</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Total</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLCDNumber" name="lcdNumber"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>55</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Pagar</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Documents/Qt proyecto final/Pagar_logo.png</normaloff>../Documents/Qt proyecto final/Pagar_logo.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
