@@ -1,42 +1,43 @@
-venv/
-__pycache__/
-*.py[cod]
+.states
+
+# Env
+# IDEs
+# OS
+# Reflex
 *$py.class
+*.db
+*.egg
+*.egg-info/
+*.env
+*.py[cod]
 *.so
+*.swo
+*.swp
+*~
+.DS_Store
 .Python
-env/
+.eggs/
+.env
+.idea/
+.installed.cfg
+.vscode/
+.web
+.web/
+Thumbs.db
+__pycache__/
+assets/
+assets/external/
 build/
 develop-eggs/
 dist/
 downloads/
 eggs/
-.eggs/
+env/
 lib/
 lib64/
+node_modules/
 parts/
 sdist/
 var/
+venv/
 wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Reflex
-.web/
-assets/
-node_modules/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
-.env
-*.env
