@@ -1,0 +1,43 @@
+.states
+
+# Env
+# IDEs
+# OS
+# Reflex
+*$py.class
+*.db
+*.egg
+*.egg-info/
+*.env
+*.py[cod]
+*.so
+*.swo
+*.swp
+*~
+.DS_Store
+.Python
+.eggs/
+.env
+.idea/
+.installed.cfg
+.vscode/
+.web
+.web/
+Thumbs.db
+__pycache__/
+assets/
+assets/external/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+env/
+lib/
+lib64/
+node_modules/
+parts/
+sdist/
+var/
+venv/
+wheels/

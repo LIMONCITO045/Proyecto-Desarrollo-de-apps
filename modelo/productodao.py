@@ -5,16 +5,24 @@ class ProductoDAO:
     def __init__(self):
         self.bd = ConexionBD()
         self.producto = Producto()
-        
+    
     def listarProductos(self):
         self.bd.establecerConexionBD()
         cursor = self.bd.conexion.cursor()
-        query = 'SELECT id_producto, tipo, precio, talla, id_catalogo FROM [dbo].[productos]'
-        cursor.execute(query)
+        sp = 'EXEC [dbo].[sp_ListarProductos]'
+        cursor.execute(sp)
         filas = cursor.fetchall()
-        for fila in filas:
-            print(f"ID: {fila[0]}, Tipo: {fila[1]}, Precio: {fila[2]}, Talla: {fila[3]}, Catálogo: {fila[4]}")
         self.bd.cerrarConexionBD()
+        return filas
+    
+    def obtenerProductoPorID(self, id_producto):
+        self.bd.establecerConexionBD()
+        cursor = self.bd.conexion.cursor()
+        sp = 'EXEC [dbo].[sp_ObtenerProductoPorID] ?'
+        cursor.execute(sp, (id_producto,))
+        fila = cursor.fetchone()
+        self.bd.cerrarConexionBD()
+        return fila
     
     def insertarProducto(self, tipo, precio, talla, id_catalogo):
         self.bd.establecerConexionBD()
@@ -23,9 +31,16 @@ class ProductoDAO:
         cursor.execute(sp, (tipo, precio, talla, id_catalogo))
         self.bd.conexion.commit()
         resultado = cursor.fetchone()
-        print(f"Producto insertado con ID: {resultado[0]}")
         self.bd.cerrarConexionBD()
         return resultado[0]
+    
+    def actualizarProducto(self, id_producto, tipo, precio, talla, id_catalogo):
+        self.bd.establecerConexionBD()
+        cursor = self.bd.conexion.cursor()
+        sp = 'EXEC [dbo].[sp_ActualizarProducto] ?, ?, ?, ?, ?'
+        cursor.execute(sp, (id_producto, tipo, precio, talla, id_catalogo))
+        self.bd.conexion.commit()
+        self.bd.cerrarConexionBD()
     
     def actualizarPrecioProducto(self, id_producto, nuevo_precio):
         self.bd.establecerConexionBD()
@@ -33,8 +48,14 @@ class ProductoDAO:
         sp = 'EXEC [dbo].[sp_ActualizarPrecioProducto] ?, ?'
         cursor.execute(sp, (id_producto, nuevo_precio))
         self.bd.conexion.commit()
-        resultado = cursor.fetchone()
-        print(resultado[0])
+        self.bd.cerrarConexionBD()
+    
+    def eliminarProducto(self, id_producto):
+        self.bd.establecerConexionBD()
+        cursor = self.bd.conexion.cursor()
+        sp = 'EXEC [dbo].[sp_EliminarProducto] ?'
+        cursor.execute(sp, (id_producto,))
+        self.bd.conexion.commit()
         self.bd.cerrarConexionBD()
     
     def obtenerProductosPorCatalogo(self, id_catalogo):
@@ -43,6 +64,5 @@ class ProductoDAO:
         query = 'SELECT * FROM [dbo].[fn_ProductosPorCatalogo](?)'
         cursor.execute(query, (id_catalogo,))
         filas = cursor.fetchall()
-        for fila in filas:
-            print(f"ID: {fila[0]}, Tipo: {fila[1]}, Precio: {fila[2]}, Talla: {fila[3]}")
         self.bd.cerrarConexionBD()
+        return filas

@@ -122,6 +122,15 @@ class HistorialCambios:
     
     def __str__(self):
         return f"Cambio {self.id_historial}: {self.accion} en {self.tabla} - {self.fecha}"
+    
+@dataclass
+class Usuario:
+    """Modelo para la tabla usuario"""
+    nombre: str = ""  # PK
+    contraseña: str = ""
+    
+    def __str__(self):
+        return f"Usuario: {self.nombre}"
 
 
 # Diccionario para mapear nombres de tablas a clases
@@ -134,7 +143,8 @@ MODELS = {
     'cobranza': Cobranza,
     'ganancia_empresa': GananciaEmpresa,
     'atencion_a_clientes': AtencionCliente,
-    'historial_cambios': HistorialCambios
+    'historial_cambios': HistorialCambios,
+    'usuario' : Usuario
 }
 
 
