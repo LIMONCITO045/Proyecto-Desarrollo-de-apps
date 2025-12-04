@@ -50,7 +50,7 @@ class CarritoWindow(QMainWindow):
     def cargar_pedidos(self):
         """Cargar pedidos desde la base de datos"""
         try:
-            filas = self.pedido_dao.listarPedidos()
+            filas = self.pedido_dao.listarPedidosConDetalle()
             
             # Limpiar la tabla
             self.tableWidget.setRowCount(0)
