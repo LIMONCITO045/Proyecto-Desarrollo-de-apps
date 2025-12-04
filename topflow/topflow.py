@@ -15,64 +15,67 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from modelo.productodao import ProductoDAO
 from modelo.pedidodao import PedidoDAO
 
-# Mapeo de productos a emojis
+# Mapeo de productos a emojis - CORREGIDO Y AMPLIADO
 EMOJIS_PRODUCTOS = {
-    "camisa": "👕", "blusa": "👕", "playera": "👕",
+    # Ropa superior
+    "camisa": "👔", "blusa": "👚", "playera": "👕",
+    "polo": "👕", "camiseta": "👕",
+    
+    # Ropa inferior
     "pantalon": "👖", "pantalón": "👖", "jeans": "👖",
-    "zapato": "👟", "tenis": "👟", "calzado": "👟",
-    "vestido": "👗",
-    "chaqueta": "🧥", "chamarra": "🧥", "jacket": "🧥",
-    "gorra": "🧢", "sombrero": "🧢",
-    "bolsa": "👜", "mochila": "👜",
-    "short": "🩳", "bermuda": "🩳",
+    "short": "🩳", "bermuda": "🩳", "shorts": "🩳",
+    "falda": "👗",
+    
+    # Calzado
+    "zapato": "👞", "tenis": "👟", "calzado": "👟",
+    "sandalia": "👡", "sandalias": "👡",
     "bota": "🥾", "botas": "🥾",
-    "bufanda": "🧣",
-}
-
-# URLs de imágenes reales de productos
-IMAGENES_PRODUCTOS = {
-    # LUJO
-    "Camisa Tommy Hilfiger Slim Fit": "https://placehold.co/400x400/4169E1/white?text=Tommy+Hilfiger+Shirt",
-    "Camisa Polo Ralph Lauren Oxford": "https://placehold.co/400x400/003366/white?text=Ralph+Lauren+Shirt",
+    "zapatilla": "👟", "zapatillas": "👟",
     
-    # PREMIUM
-    "Traje Hugo Boss Slim": "https://placehold.co/400x400/000000/white?text=Hugo+Boss+Suit",
-    "Reloj Fossil Grant": "https://placehold.co/400x400/C0C0C0/black?text=Fossil+Watch",
+    # Vestidos y trajes
+    "vestido": "👗",
+    "traje": "🤵", "suit": "🤵",
     
-    # MEDIO-ALTO
-    "Botas Timberland 6-inch": "https://placehold.co/400x400/8B4513/white?text=Timberland+Boots",
-    "Abrigo Zara Texturizado": "https://placehold.co/400x400/2F4F4F/white?text=Zara+Coat",
-    "Zapatillas Adidas Superstar": "https://placehold.co/400x400/000000/white?text=Adidas+Superstar",
-    "Chaqueta The North Face": "https://placehold.co/400x400/FF0000/white?text=North+Face",
-    "Vestido Mango Midi": "https://placehold.co/400x400/FF69B4/white?text=Mango+Dress",
-    "Bolso Michael Kors Jet Set": "https://placehold.co/400x400/DAA520/white?text=Michael+Kors",
+    # Abrigos y chaquetas
+    "chaqueta": "🧥", "chamarra": "🧥", "jacket": "🧥",
+    "abrigo": "🧥", "chaleco": "🦺",
+    "sudadera": "🧥", "hoodie": "🧥",
     
-    # MEDIO
-    "Mochila JanSport SuperBreak": "https://placehold.co/400x400/1E90FF/white?text=JanSport+Backpack",
-    "Jeans Levi's 511 Slim": "https://placehold.co/400x400/00008B/white?text=Levis+Jeans",
-    "Sudadera Nike Sportswear Club": "https://placehold.co/400x400/FFA500/white?text=Nike+Hoodie",
-    "Chaleco Uniqlo Ultra Light Down": "https://placehold.co/400x400/DC143C/white?text=Uniqlo+Vest",
-    "Pijama Victoria's Secret": "https://placehold.co/400x400/FF1493/white?text=Victoria+Secret",
-    "Pantalón Dockers Alpha Khaki": "https://placehold.co/400x400/D2B48C/black?text=Dockers+Pants",
-    "Jersey Zara Cuello Alto": "https://placehold.co/400x400/708090/white?text=Zara+Sweater",
-    "Blusa H&M Premium Satin": "https://placehold.co/400x400/FFB6C1/white?text=H%26M+Blouse",
-    "Falda Pull & Bear Plisada": "https://placehold.co/400x400/9370DB/white?text=Pull+Bear+Skirt",
-    "Sombrero Kangol Wool 504": "https://placehold.co/400x400/A0522D/white?text=Kangol+Hat",
-    "Polo Lacoste Classic Fit": "https://placehold.co/400x400/006400/white?text=Lacoste+Polo",
-    "Shorts Adidas Essentials": "https://placehold.co/400x400/4169E1/white?text=Adidas+Shorts",
-    "Sandalias Birkenstock Arizona": "https://placehold.co/400x400/8B4513/white?text=Birkenstock",
+    # Accesorios para la cabeza
+    "gorra": "🧢", "cap": "🧢",
+    "sombrero": "🎩", "hat": "🎩",
+    "kangol": "🎩",
     
-    # ACCESIBLE
-    "Cinturón Levi's Reversible": "https://placehold.co/400x400/654321/white?text=Levis+Belt",
-    "Bufanda Gap Infinity": "https://placehold.co/400x400/B0C4DE/black?text=Gap+Scarf",
-    "Corbata Calvin Klein Slim": "https://placehold.co/400x400/2F4F4F/white?text=Calvin+Klein",
-    "Gorra Nike Sportswear H86": "https://placehold.co/400x400/000000/white?text=Nike+Cap",
-    "Guantes Columbia Thermarator": "https://placehold.co/400x400/4682B4/white?text=Columbia+Gloves",
-    "Pañuelo Banana Republic": "https://placehold.co/400x400/F5DEB3/black?text=Banana+Republic",
-    "Calcetines Stance Classic": "https://placehold.co/400x400/696969/white?text=Stance+Socks",
+    # Bolsos y mochilas
+    "bolso": "👜", "bolsa": "👜", "bag": "👜",
+    "mochila": "🎒", "backpack": "🎒",
+    "jansport": "🎒",
     
-    # ZAPATOS
-    "Zapatos Clarks Desert Boot": "https://placehold.co/400x400/CD853F/white?text=Clarks+Shoes",
+    # Accesorios
+    "bufanda": "🧣", "scarf": "🧣",
+    "corbata": "👔", "tie": "👔",
+    "cinturon": "👖", "cinturón": "👖", "belt": "👖",
+    "guante": "🧤", "guantes": "🧤", "gloves": "🧤",
+    "pañuelo": "🧣",
+    "calcetines": "🧦", "calcetín": "🧦", "socks": "🧦",
+    
+    # Relojes y joyería
+    "reloj": "⌚", "watch": "⌚",
+    "fossil": "⌚",
+    
+    # Ropa interior y pijamas
+    "pijama": "👔", "pajama": "👔",
+    
+    # Deportivo
+    "nike": "👟", "adidas": "👟",
+    
+    # Marcas específicas
+    "birkenstock": "👡",
+    "timberland": "🥾",
+    "michael kors": "👜",
+    "hugo boss": "🤵",
+    "zara": "👔",
+    "uniqlo": "🧥",
 }
 
 
@@ -93,6 +96,7 @@ class CartItem(BaseModel):
     tipo: str
     precio: int
     talla: str
+    id_catalogo: int
     cantidad: int = 1
     emoji: str = "👔"
 
@@ -108,13 +112,24 @@ class State(rx.State):
     mostrar_checkout: bool = False
     destino: str = ""
     nombre_cliente: str = ""
+    pais_cliente: str = ""
+    region_cliente: str = ""
     
     def obtener_emoji(self, tipo: str) -> str:
         """Obtener emoji basado en el tipo de producto"""
         tipo_lower = tipo.lower()
+        
+        # Buscar coincidencias exactas primero
+        for palabra_clave, emoji in EMOJIS_PRODUCTOS.items():
+            if palabra_clave == tipo_lower:
+                return emoji
+        
+        # Luego buscar palabras contenidas
         for palabra_clave, emoji in EMOJIS_PRODUCTOS.items():
             if palabra_clave in tipo_lower:
                 return emoji
+        
+        # Si no encuentra nada, retornar emoji por defecto
         return "👔"
     
     def cargar_productos(self):
@@ -146,7 +161,7 @@ class State(rx.State):
                 
         except Exception as e:
             print(f"Error al cargar productos: {e}")
-            self.mensaje = f"⚠️ Error al conectar con la base de datos"
+            self.mensaje = f"⚠️ Error al conectar con la base de datos: {str(e)}"
             self.productos = []
         
         self.cargando = False
@@ -179,6 +194,7 @@ class State(rx.State):
             tipo=producto.tipo,
             precio=producto.precio,
             talla=producto.talla,
+            id_catalogo=producto.id_catalogo,
             cantidad=1,
             emoji=producto.emoji
         )
@@ -237,43 +253,80 @@ class State(rx.State):
         self.mostrar_checkout = False
         self.destino = ""
         self.nombre_cliente = ""
+        self.pais_cliente = ""
+        self.region_cliente = ""
     
     def realizar_pedido(self):
         """Guardar pedido en la base de datos"""
-        if not self.destino or not self.nombre_cliente:
+        if not self.destino or not self.nombre_cliente or not self.pais_cliente or not self.region_cliente:
             self.mensaje = "⚠️ Por favor completa todos los campos"
             return
         
         try:
-            pedido_dao = PedidoDAO()
-            id_cliente = 1
-            id_produccion = 1
-            id_catalogo = 1
-            pedidos_creados = []
+            from modelo.clientedao import ClienteDAO
             
+            # 1. CREAR CLIENTE
+            cliente_dao = ClienteDAO()
+            id_cliente = cliente_dao.insertarCliente(
+                nombre=self.nombre_cliente,
+                pais=self.pais_cliente,
+                region=self.region_cliente
+            )
+            print(f"✓ Cliente creado con ID: {id_cliente}")
+            
+            # 2. PREPARAR LISTA DE PRODUCTOS PARA EL PEDIDO
+            productos = []
             for item in self.carrito:
-                id_pedido = pedido_dao.insertarPedido(
-                    destino=self.destino,
-                    id_informacion_pedido=0,
-                    total=item.precio * item.cantidad,
-                    id_producto=item.id_producto,
-                    id_cliente=id_cliente,
-                    id_produccion=id_produccion,
-                    id_catalogo=id_catalogo
-                )
-                pedidos_creados.append(id_pedido)
-                print(f"✓ Pedido #{id_pedido} creado para {item.tipo}")
+                productos.append({
+                    'id_producto': item.id_producto,
+                    'cantidad': item.cantidad,
+                    'precio_unitario': item.precio
+                })
             
-            self.mensaje = f"✓ ¡Pedido realizado!\nCliente: {self.nombre_cliente}\nDestino: {self.destino}\nTotal: ${self.total} USD"
+            # 3. CREAR UN SOLO PEDIDO CON TODOS LOS PRODUCTOS
+            pedido_dao = PedidoDAO()
+            id_pedido = pedido_dao.insertarPedidoConDetalle(
+                destino=self.destino,
+                id_informacion_pedido=None,
+                total=self.total,  # Total completo del carrito
+                id_cliente=id_cliente,
+                id_produccion=1,
+                id_catalogo=self.carrito[0].id_catalogo if self.carrito else 1,
+                productos=productos
+            )
+            
+            print(f"✓ Pedido #{id_pedido} creado con {len(productos)} productos")
+            
+            # 4. INCREMENTAR HISTORIAL DE COMPRAS
+            cliente_dao.incrementarHistorialCompras(id_cliente)
+            
+            # 5. PREPARAR RESUMEN DE PRODUCTOS
+            resumen_productos = "\n".join([
+                f"  • {item.emoji} {item.tipo} (Talla {item.talla}) x{item.cantidad} - ${item.precio * item.cantidad} USD"
+                for item in self.carrito
+            ])
+            
+            self.mensaje = f"✓ ¡Pedido #{id_pedido} realizado exitosamente!\n\n" \
+                          f"👤 Cliente: {self.nombre_cliente}\n" \
+                          f"🌍 País: {self.pais_cliente}\n" \
+                          f"📍 Región: {self.region_cliente}\n" \
+                          f"🏠 Destino: {self.destino}\n\n" \
+                          f"📦 Productos ({len(self.carrito)}):\n{resumen_productos}\n\n" \
+                          f"💰 Total: ${self.total} USD"
+            
             self.carrito = []
             self.total = 0
             self.mostrar_checkout = False
             self.destino = ""
             self.nombre_cliente = ""
+            self.pais_cliente = ""
+            self.region_cliente = ""
             
         except Exception as e:
-            print(f"Error: {e}")
-            self.mensaje = f"⚠️ Error al procesar el pedido"
+            import traceback
+            error_detallado = traceback.format_exc()
+            print(f"Error detallado al realizar pedido:\n{error_detallado}")
+            self.mensaje = f"⚠️ Error al procesar el pedido: {str(e)}"
 
 
 def navbar() -> rx.Component:
@@ -314,24 +367,15 @@ def navbar() -> rx.Component:
 
 
 def producto_card(producto: Producto) -> rx.Component:
-    """Tarjeta de producto con imagen real"""
-    # Obtener URL de la imagen o usar placeholder
-    imagen_url = IMAGENES_PRODUCTOS.get(
-        producto.tipo, 
-        "https://placehold.co/400x400/667eea/white?text=Producto"  # Placeholder genérico
-    )
-    
+    """Tarjeta de producto con emoji"""
     return rx.card(
         rx.vstack(
-            rx.image(
-                src=imagen_url,
-                width="100%",
-                height="200px",
-                object_fit="cover",
-                border_radius="8px",
-                loading="lazy",
+            rx.text(
+                producto.emoji,
+                font_size="72px",
+                line_height="1",
             ),
-            rx.heading(producto.tipo, size="5", weight="bold"),
+            rx.heading(producto.tipo, size="5", weight="bold", text_align="center"),
             rx.text(f"Talla: {producto.talla}", color="gray", size="2"),
             # Badge de stock con rx.cond
             rx.cond(
@@ -399,31 +443,83 @@ def formulario_checkout() -> rx.Component:
     """Formulario de checkout"""
     return rx.dialog.root(
         rx.dialog.content(
-            rx.dialog.title("Finalizar Compra"),
+            rx.dialog.title("Finalizar Pedido"),
             rx.dialog.description("Completa la información para realizar tu pedido"),
             rx.vstack(
-                rx.text("Información del Cliente", weight="bold", size="3"),
-                rx.input(placeholder="Tu nombre completo", value=State.nombre_cliente, on_change=State.set_nombre_cliente, size="3"),
-                rx.text("Dirección de Envío", weight="bold", size="3"),
-                rx.text_area(placeholder="Calle, número, colonia, ciudad, estado, país", value=State.destino, on_change=State.set_destino, rows="3"),
+                # Información del Cliente
+                rx.text("Información del Cliente", weight="bold", size="4", color="#667eea"),
+                rx.input(
+                    placeholder="Nombre completo",
+                    value=State.nombre_cliente,
+                    on_change=State.set_nombre_cliente,
+                    size="3"
+                ),
+                
+                # País
+                rx.text("País", weight="bold", size="3", margin_top="0.5em"),
+                rx.select(
+                    ["México", "Estados Unidos", "Canadá", "España", "Colombia", "Argentina", "Chile", "Perú"],
+                    placeholder="Selecciona tu país",
+                    value=State.pais_cliente,
+                    on_change=State.set_pais_cliente,
+                    size="3",
+                ),
+                
+                # Región/Estado
+                rx.text("Región/Estado", weight="bold", size="3", margin_top="0.5em"),
+                rx.input(
+                    placeholder="Ej: Guanajuato, Ciudad de México, California",
+                    value=State.region_cliente,
+                    on_change=State.set_region_cliente,
+                    size="3"
+                ),
+                
+                # Dirección de Envío
+                rx.text("Dirección de Envío", weight="bold", size="4", color="#667eea", margin_top="1em"),
+                rx.text_area(
+                    placeholder="Calle, número, colonia, código postal, ciudad",
+                    value=State.destino,
+                    on_change=State.set_destino,
+                    rows="4"
+                ),
+                
                 rx.divider(),
+                
+                # Total
                 rx.hstack(
                     rx.text("Total a pagar:", weight="bold", size="4"),
                     rx.spacer(),
                     rx.text(f"${State.total} USD", weight="bold", size="5", color="#667eea"),
                     width="100%",
                 ),
-                spacing="3",
+                spacing="2",
                 width="100%",
             ),
             rx.hstack(
-                rx.dialog.close(rx.button("Cancelar", variant="soft", color_scheme="gray", on_click=State.cancelar_checkout)),
-                rx.button(rx.hstack(rx.icon("check-check", size=18), rx.text("Confirmar Pedido"), spacing="2"), on_click=State.realizar_pedido, color_scheme="purple"),
+                rx.dialog.close(
+                    rx.button(
+                        "Cancelar",
+                        variant="soft",
+                        color_scheme="gray",
+                        on_click=State.cancelar_checkout
+                    )
+                ),
+                rx.button(
+                    rx.hstack(
+                        rx.icon("check-check", size=18),
+                        rx.text("Confirmar Pedido"),
+                        spacing="2"
+                    ),
+                    on_click=State.realizar_pedido,
+                    color_scheme="purple"
+                ),
                 spacing="3",
                 justify="end",
                 width="100%",
+                margin_top="1em",
             ),
-            max_width="500px",
+            max_width="550px",
+            padding="1.5em",
         ),
         open=State.mostrar_checkout,
     )
@@ -504,7 +600,7 @@ def carrito() -> rx.Component:
                         rx.card(
                             rx.vstack(
                                 rx.hstack(rx.heading("Total:", size="6"), rx.spacer(), rx.heading(f"${State.total} USD", size="7", color="#667eea"), width="100%"),
-                                rx.button(rx.hstack(rx.icon("credit-card", size=18), rx.text("Proceder al Pago"), spacing="2"), on_click=State.abrir_checkout, size="4", color_scheme="purple", width="100%"),
+                                rx.button(rx.hstack(rx.icon("package-check", size=18), rx.text("Realizar Pedido"), spacing="2"), on_click=State.abrir_checkout, size="4", color_scheme="purple", width="100%"),
                                 spacing="3",
                             ),
                             padding="1.5em",
