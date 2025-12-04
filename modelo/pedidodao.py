@@ -1,5 +1,5 @@
-from modelo.models import Pedido
-from modelo.conexionbd import ConexionBD
+from models import Pedido
+from conexionbd import ConexionBD
 
 class PedidoDAO:
     def __init__(self):

@@ -1,5 +1,5 @@
-from modelo.models import Cobranza
-from modelo.conexionbd import ConexionBD
+from models import Cobranza
+from conexionbd import ConexionBD
 
 class CobranzaDAO:
     def __init__(self):

@@ -6,7 +6,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QApplication, QHeaderView
 from PyQt5.QtCore import Qt
 from PyQt5 import uic
-from modelo.productodao import ProductoDAO
+from productodao import ProductoDAO
 
 
 class ProductosWindow(QMainWindow):

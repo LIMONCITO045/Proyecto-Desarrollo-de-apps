@@ -1,5 +1,5 @@
-from modelo.models import Cliente
-from modelo.conexionbd import ConexionBD
+from models import Cliente
+from conexionbd import ConexionBD
 
 class ClienteDAO:
     def __init__(self):

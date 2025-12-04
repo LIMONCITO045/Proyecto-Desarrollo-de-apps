@@ -5,7 +5,7 @@ Conecta Login_topflow.ui con la base de datos
 import sys
 from PyQt5.QtWidgets import QDialog, QMessageBox, QApplication
 from PyQt5 import uic
-from modelo.usuariodao import UsuarioDAO
+from usuariodao import UsuarioDAO
 
 
 class LoginWindow(QDialog):

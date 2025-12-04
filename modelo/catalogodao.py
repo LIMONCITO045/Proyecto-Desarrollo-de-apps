@@ -1,5 +1,5 @@
-from modelo.models import Catalogo
-from modelo.conexionbd import ConexionBD
+from models import Catalogo
+from conexionbd import ConexionBD
 
 class CatalogoDAO:
     def __init__(self):
