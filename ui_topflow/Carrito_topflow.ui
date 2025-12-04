@@ -631,17 +631,17 @@ QCalendarWidget QAbstractItemView {
          </attribute>
          <column>
           <property name="text">
-           <string>Nombre</string>
+           <string>ID_Pedido</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Cantidad</string>
+           <string>Fecha</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Precio</string>
+           <string>Cantidad_de_productos</string>
           </property>
          </column>
          <column>
@@ -649,25 +649,6 @@ QCalendarWidget QAbstractItemView {
            <string>Precio total</string>
           </property>
          </column>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>55</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Vaciar Carrito</string>
-         </property>
         </widget>
        </item>
       </layout>
@@ -691,7 +672,7 @@ QCalendarWidget QAbstractItemView {
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Total</string>
+          <string>Total de pedidos</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -719,7 +700,7 @@ QCalendarWidget QAbstractItemView {
        </size>
       </property>
       <property name="text">
-       <string>Pagar</string>
+       <string>Actualizar</string>
       </property>
       <property name="icon">
        <iconset>
