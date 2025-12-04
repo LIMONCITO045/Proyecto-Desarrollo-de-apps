@@ -636,7 +636,7 @@ QCalendarWidget QAbstractItemView {
          </column>
          <column>
           <property name="text">
-           <string>Fecha</string>
+           <string>Lugar</string>
           </property>
          </column>
          <column>
@@ -646,7 +646,7 @@ QCalendarWidget QAbstractItemView {
          </column>
          <column>
           <property name="text">
-           <string>Precio total</string>
+           <string>Usuario</string>
           </property>
          </column>
         </widget>
