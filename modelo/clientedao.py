@@ -1,8 +1,5 @@
-"""
-ClienteDAO - Versión corregida SIN usar fetchone() para INSERT
-"""
-
-from modelo.conexionbd import ConexionBD
+from models import Cliente
+from conexionbd import ConexionBD
 
 
 class ClienteDAO:

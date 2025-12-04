@@ -1,4 +1,4 @@
-from modelo.conexionbd import ConexionBD
+from conexionbd import ConexionBD
 
 class UsuarioDAO:
     def __init__(self):

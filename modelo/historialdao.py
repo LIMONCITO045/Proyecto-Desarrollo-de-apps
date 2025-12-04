@@ -1,5 +1,5 @@
-from modelo.models import HistorialCambios
-from modelo.conexionbd import ConexionBD
+from models import HistorialCambios
+from conexionbd import ConexionBD
 
 class HistorialDAO:
     def __init__(self):

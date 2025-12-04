@@ -1,11 +1,5 @@
-"""
-PedidoDAO - Actualizado con soporte para detalle_pedido
-Maneja pedidos con múltiples productos
-"""
-
-from modelo.conexionbd import ConexionBD
-import json
-
+from models import Pedido
+from conexionbd import ConexionBD
 
 class PedidoDAO:
     def __init__(self):

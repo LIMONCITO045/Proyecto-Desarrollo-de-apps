@@ -1,5 +1,5 @@
-from modelo.models import Produccion
-from modelo.conexionbd import ConexionBD
+from models import Produccion
+from conexionbd import ConexionBD
 
 class ProduccionDAO:
     def __init__(self):
